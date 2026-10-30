@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2a0715">
+<title>Three Years, Still You ❤️</title>
+<style>
+:root{--rose:#ff7199;--pink:#ffd4df;--wine:#2a0715;--cream:#fff5f7}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--cream);font-family:Georgia,"Times New Roman",serif;background:radial-gradient(ellipse at top,#681b3a 0,#2a0715 50%,#12040b 100%);min-height:100vh;overflow-x:hidden}
+button,input{font:inherit}
+button{cursor:pointer}
+#hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.float-heart{position:absolute;bottom:-50px;color:#ff7da2;opacity:0;animation:rise linear forwards;text-shadow:0 0 16px #ff6b97}
+@keyframes rise{0%{transform:translateY(0) rotate(0) scale(.7);opacity:0}10%{opacity:.7}90%{opacity:.55}100%{transform:translateY(-110vh) rotate(35deg) scale(1.25);opacity:0}}
+main{position:relative;z-index:1;max-width:850px;margin:auto;padding:24px 17px 70px}
+.hero{min-height:92svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px 0}
+.eyebrow{letter-spacing:.22em;text-transform:uppercase;font:600 .72rem Arial,sans-serif;color:#ffb1c6}
+h1{font-size:clamp(2.7rem,10vw,5.4rem);line-height:.98;margin:20px 0;color:#fff4f7;font-weight:500;text-shadow:0 0 32px #ff679655}
+h1 span{display:block;color:var(--rose);font-style:italic}
+.sub{font:1rem/1.7 Arial,sans-serif;color:#f5c8d5;max-width:540px;margin:14px auto 22px}
+.heart-mark{font-size:3.2rem;animation:pulse 1.7s ease-in-out infinite;filter:drop-shadow(0 0 15px #ff5c8a)}
+@keyframes pulse{50%{transform:scale(1.14)}}
+.pill{border:1px solid #ff9db9;color:white;background:#ffffff12;padding:13px 20px;border-radius:999px;backdrop-filter:blur(8px);transition:.2s}
+.pill:hover{background:#ff719933;transform:translateY(-2px)}
+.hint{font: .78rem Arial,sans-serif;color:#dba8b8;margin-top:13px}
+section{margin:26px 0;padding:27px 20px;border:1px solid #ffffff20;border-radius:24px;background:linear-gradient(145deg,#ffffff0c,#ffffff04);box-shadow:0 18px 55px #00000016;backdrop-filter:blur(8px)}
+h2{font-size:clamp(1.8rem,6vw,2.6rem);font-weight:500;text-align:center;margin:0 0 15px}
+.section-intro{text-align:center;font: .93rem/1.7 Arial,sans-serif;color:#f0c7d2;max-width:580px;margin:0 auto 22px}
+.letter{max-width:650px;margin:auto;font-size:1.14rem;line-height:1.95;color:#fff0f4}
+.letter p{margin:0 0 15px}
+.signature{color:#ff9db9;font-style:italic;font-size:1.5rem;text-align:right;margin-top:20px}
+.photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+/* .photo-slot{display:flex;relative;min-height:190px;aspect-ratio:4/5;border:1px dashed #ff9db9aa;border-radius:17px;overflow:hidden;background:linear-gradient(135deg,#6d2343,#291020);display:flex;align-items:center;justify-content:center;text-align:center;padding:12px} */
+/* .photo-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none} */
+
+
+.photo-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+}
+
+.photo-slot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.photo-slot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+
+.photo-slot .placeholder{font: .85rem/1.6 Arial,sans-serif;color:#ffd6e1}
+.photo-slot .num{display:block;font-size:2rem;margin-bottom:7px}
+.photo-tools{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:16px}
+.photo-tools label{display:inline-flex;align-items:center;gap:8px}
+input[type=file]{display:none}
+.memories{display:grid;grid-template-columns:1fr;gap:12px}
+.memory{border-radius:16px;padding:17px 18px;background:#ffb7cc12;border:1px solid #ffb7cc2b}
+.memory strong{display:block;color:#ffb3c9;font-size:1.1rem;margin-bottom:6px}
+.memory p{font: .93rem/1.7 Arial,sans-serif;color:#f8dce4;margin:0}
+.promise{text-align:center;font-size:1.3rem;line-height:1.8;color:#ffeaf0}
+.big-three{font-size:clamp(5rem,20vw,9rem);line-height:1;color:#ff7199;text-align:center;text-shadow:0 0 45px #ff719955}
+footer{text-align:center;font: .78rem/1.7 Arial,sans-serif;color:#d6a2b3;padding:30px 10px}
+.hidden{display:none!important}
+.reveal{animation:appear .9s both}
+@keyframes appear{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:650px){main{padding-inline:26px}.memories{grid-template-columns:repeat(3,1fr)}section{padding:34px 32px}.photo-grid{gap:18px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="hearts" aria-hidden="true"></div>
+<main>
+  <header class="hero">
+    <div class="eyebrow">November 3 · Our little forever</div>
+    <div class="heart-mark">♡</div>
+    <h1>Three years,<span>still you.</span></h1>
+
+    <button class="pill" id="openLetter">Open your little surprise 💌</button>
+    <p class="hint">Open with a smile cheekuu....❤️</p>
+    <div style="margin-top:30px;color:#ffb2c7;font-size:1.5rem">♡　✦　♡</div>
+  </header>
+
+  <section id="letterSection" class="hidden">
+    <h2>To my favourite person</h2>
+    <div class="letter">
+      <p>Happy 3rd anniversary, my love. ❤️</p>
+      <p>Three years may sound like a number, but to me, they're a thousand little moments — the conversations, the laughs, the silly things only we understand, and the comfort of knowing you're in my life.</p>
+      <p>You make ordinary days feel special just by being part of them. If I could give you one thing today, it would be the chance to see yourself through my eyes, even for a moment. Maybe then you'd understand how precious you are to me.</p>
+      <p>I can't promise that every day will be perfect. But I can promise to keep choosing you, to listen, to learn, to grow with you, and to keep making memories together. I hope we look back on this little page years from now and smile at how far we've come.</p>
+      <p>Thank you for being you, and for being part of my story. This is a small gift made with a lot of love — because you deserve to feel loved, today and always.</p>
+      <div class="signature">Always yours, with love. ❤️</div>
+    </div>
+  </section>
+
+  <!-- <section>
+    <h2>Our little gallery 📸</h2>
+    <p class="section-intro">Add your favourite photos here before you share the page. Choose the moments that feel like <em>you two</em>.</p>
+    <div class="photo-grid">
+      <div class="photo-slot"><img src="Photos/photo_1.jpg" alt="Our favourite memory one"><div class="placeholder"><span class="num">♡</span>Our first favourite photo</div></div>
+      <div class="photo-slot"><img src="Photos/photo_2.jpg" alt="Our favourite memory two"><div class="placeholder"><span class="num">✦</span>A day I won't forget</div></div>
+      <div class="photo-slot"><img src="Photos/photo_3.jpg" alt="Our favourite memory three"><div class="placeholder"><span class="num">♡</span>Your beautiful smile</div></div>
+      <div class="photo-slot"><img src="Photos/photo_4.jpg" alt="Our favourite memory four"><div class="placeholder"><span class="num">✧</span>One more memory together</div></div>
+    </div>
+    
+    
+  </section> -->
+  
+<section>
+  <h2> A frame from the story 📸</h2>
+  <!-- <p class="section-intro">
+    Add your favourite photos here before you share the page.
+    Choose the moments that feel like <em>you two</em>.
+  </p> -->
+
+  <div class="photo-grid">
+    <div class="photo-slot">
+      <img src="Photos/photo_2.jpg" alt="Our favourite memory one" style="display:block">
+      <div class="placeholder" style="display:none">
+        <span class="num">♡</span>Our first favourite photo
+      </div>
+    </div>
+
+    <!-- <div class="photo-slot">
+      <img src="Photos/photo_3.jpg" alt="Our favourite memory two" style="display:block">
+      <div class="placeholder" style="display:none">
+        <span class="num">✦</span>A day I won't forget
+      </div>
+    </div> -->
+
+    <!-- <div class="photo-slot">
+      <img src="Photos/photo_3.jpg" alt="Our favourite memory three" style="display:block">
+      <div class="placeholder" style="display:none">
+        <span class="num">♡</span>Your beautiful smile
+      </div>
+    </div>
+
+    <div class="photo-slot">
+      <img src="Photos/photo_4.jpg" alt="Our favourite memory four" style="display:block">
+      <div class="placeholder" style="display:none">
+        <span class="num">✧</span>One more memory together
+      </div>
+    </div> -->
+  </div>
+</section>
+
+
+  <section>
+    <h2>Three things I'll always treasure</h2>
+    <p class="section-intro">Three years together — and so many reasons to be grateful.</p>
+    <div class="big-three">03</div>
+    <div class="memories">
+      <div class="memory"><strong>The little things</strong><p>The random talks, shared laughs, and tiny moments that became our memories.</p></div>
+      <div class="memory"><strong>The way you feel like home</strong><p>That special comfort of being able to be myself with you.</p></div>
+      <div class="memory"><strong>Everything still ahead</strong><p>More places, more stories, more birthdays and anniversaries — together.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>One little promise 💗</h2>
+    <p class="promise">“No matter how much life changes,<br>I'll keep finding new reasons<br>to fall in love with you.”</p>
+    <p class="section-intro" style="margin-bottom:0">Happy anniversary, my love. Here's to year three — and to all the chapters we haven't written yet.</p>
+  </section>
+
+  <section style="text-align:center">
+    <h2>One last thing…</h2>
+    <!-- <p class="section-intro">If I had to start our story all over again, I'd still hope it leads me to you.</p> -->
+    <button class="pill" id="finalReveal">Tap for one last surprise ❤️</button>
+    <p id="finalMessage" class="promise hidden reveal" style="margin-top:22px">In every version of my future,<br><span style="color:#ff8eae">I hope you're there.</span><br>Forever my favourite person.❤️ </p>
+  </section>
+
+  <!-- <section style="text-align:center">
+    <h2>Our song 🎶</h2>
+    <p class="section-intro">Tap play for a gentle original melody made by this page. Your phone may require a tap before sound can start.</p>
+    <button class="pill" id="musicButton">♫ Play our little melody</button>
+    <p class="hint">This is a simple generated melody, not a commercial song.</p>
+  </section> -->
+  
+<section style="text-align:center">
+    <h2>Our song 🎶</h2>
+
+    <p class="section-intro">
+        A song that reminds me of you. ❤️
+    </p>
+
+    <audio id="ourSong" preload="metadata">
+        <source src="Music/ee_kattu.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="pill" id="musicButton">
+        ♫ Play our song ❤️
+    </button>
+
+    <p class="hint" id="musicStatus">
+        Just for you, my love.
+    </p>
+</section>
+
+
+  <footer>Made with love, just for you. <span style="color:#ff8cac">♥</span><br>November 3 · Three years and counting</footer>
+</main>
+<script>
+const heartLayer=document.getElementById('hearts');
+function makeHeart(){
+  const el=document.createElement('span');el.className='float-heart';
+  el.textContent=['♥','♡','✦','❤'][Math.floor(Math.random()*4)];
+  el.style.left=Math.random()*100+'%';
+  el.style.fontSize=(12+Math.random()*22)+'px';
+  el.style.animationDuration=(7+Math.random()*8)+'s';
+  heartLayer.appendChild(el);setTimeout(()=>el.remove(),16000);
+}
+for(let i=0;i<12;i++)setTimeout(makeHeart,i*450);
+setInterval(makeHeart,850);
+document.getElementById('openLetter').addEventListener('click',()=>{
+  const s=document.getElementById('letterSection');s.classList.remove('hidden');s.classList.add('reveal');
+  s.scrollIntoView({behavior:'smooth',block:'start'});
+  burstHearts();
+});
+function burstHearts(){for(let i=0;i<22;i++)setTimeout(makeHeart,i*65)}
+document.getElementById('finalReveal').addEventListener('click',()=>{
+  const m=document.getElementById('finalMessage');m.classList.remove('hidden');burstHearts();
+  document.getElementById('finalReveal').textContent='Surprise unlocked 💖';
+});
+// const picker=document.getElementById('photoPicker');
+// const slots=[...document.querySelectorAll('.photo-slot')];
+// let objectUrls=[];
+// picker.addEventListener('change',()=>{
+//   objectUrls.forEach(URL.revokeObjectURL);objectUrls=[];
+//   slots.forEach((slot,i)=>{
+//     const img=slot.querySelector('img'),ph=slot.querySelector('.placeholder'),file=picker.files[i];
+//     if(file){const url=URL.createObjectURL(file);objectUrls.push(url);img.src=url;img.style.display='block';ph.style.display='none'}
+//     else{img.removeAttribute('src');img.style.display='none';ph.style.display='block'}
+//   });
+// });
+// document.getElementById('clearPhotos').addEventListener('click',()=>{
+//   picker.value='';objectUrls.forEach(URL.revokeObjectURL);objectUrls=[];
+//   slots.forEach(slot=>{slot.querySelector('img').removeAttribute('src');slot.querySelector('img').style.display='none';slot.querySelector('.placeholder').style.display='block'});
+// });
+
+
+const picker = document.getElementById('photoPicker');
+const clearPhotos = document.getElementById('clearPhotos');
+const slots = [...document.querySelectorAll('.photo-slot')];
+let objectUrls = [];
+
+if (picker && clearPhotos) {
+  picker.addEventListener('change', () => {
+    objectUrls.forEach(url => URL.revokeObjectURL(url));
+    objectUrls = [];
+
+    slots.forEach((slot, i) => {
+      const img = slot.querySelector('img');
+      const placeholder = slot.querySelector('.placeholder');
+      const file = picker.files[i];
+
+      if (file) {
+        const url = URL.createObjectURL(file);
+        objectUrls.push(url);
+        img.src = url;
+        img.style.display = 'block';
+        placeholder.style.display = 'none';
+      }
+    });
+  });
+
+  clearPhotos.addEventListener('click', () => {
+    picker.value = '';
+    objectUrls.forEach(url => URL.revokeObjectURL(url));
+    objectUrls = [];
+  });
+}
+
+
+
+// A tiny original melody made with Web Audio. Audio starts only after a user gesture.
+
+const ourSong = document.getElementById('ourSong');
+const musicButton = document.getElementById('musicButton');
+const musicStatus = document.getElementById('musicStatus');
+
+musicButton.addEventListener('click', async () => {
+
+    if (ourSong.paused) {
+        try {
+            await ourSong.play();
+
+            musicButton.textContent = 'Ⅱ Pause our song ❤️';
+            musicStatus.textContent = 'Playing our song...';
+
+        } catch (error) {
+            musicStatus.textContent =
+                'Unable to play. Please check the Music folder.';
+        }
+
+    } else {
+        ourSong.pause();
+
+        musicButton.textContent = '♫ Play our song ❤️';
+        musicStatus.textContent = 'Song paused.';
+    }
+});
+
+ourSong.addEventListener('ended', () => {
+    musicButton.textContent = '♫ Play our song ❤️';
+    musicStatus.textContent = 'Play it again, my love ❤️';
+});
+
+// let audioCtx=null, melodyTimer=null, noteIndex=0;
+// // const notes=[523.25,659.25,783.99,659.25,587.33,698.46,880,783.99,659.25,587.33,523.25,392];
+
+
+// const notes = [
+//   392.00, 440.00, 493.88, 523.25,
+//   493.88, 440.00, 392.00, 349.23,
+//   392.00, 493.88, 587.33, 523.25,
+//   493.88, 440.00, 392.00, 440.00,
+//   523.25, 587.33, 659.25, 587.33,
+//   523.25, 493.88, 440.00, 392.00
+// ];
+
+
+// function playNote(freq,start,duration){
+//   const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
+//   osc.type='sine';osc.frequency.value=freq;
+//   gain.gain.setValueAtTime(0.0001,start);
+//   gain.gain.exponentialRampToValueAtTime(0.075,start+0.04);
+//   gain.gain.exponentialRampToValueAtTime(0.0001,start+duration);
+//   osc.connect(gain);gain.connect(audioCtx.destination);osc.start(start);osc.stop(start+duration+0.03);
+// }
+// const musicButton=document.getElementById('musicButton');
+// musicButton.addEventListener('click',async()=>{
+//   if(melodyTimer){clearInterval(melodyTimer);melodyTimer=null;musicButton.textContent='♫ Play our little melody';return}
+//   const AC=window.AudioContext||window.webkitAudioContext;
+//   if(!AC){musicButton.textContent='Audio is not supported on this browser';return}
+//   audioCtx=audioCtx||new AC();await audioCtx.resume();
+//   musicButton.textContent='Ⅱ Pause our little melody';
+//   const playNext=()=>{if(!melodyTimer)return;const now=audioCtx.currentTime;playNote(notes[noteIndex%notes.length],now,0.48);if(noteIndex%3===0)playNote(notes[(noteIndex+2)%notes.length]/2,now,0.7);noteIndex++};
+//   // Use a harmless interval ID sentinel; all sound is generated locally.
+//   melodyTimer=setInterval(playNext,180);playNext();
+// });
+</script>
+</body>
+</html>
